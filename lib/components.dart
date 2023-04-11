@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
-bool a =false;
+// bool a =false;
 
 class temiroozkomuz extends StatefulWidget {
+  AudioCache audioCache = AudioCache();
    temiroozkomuz({
     super.key,
     required this.nameMusic,
@@ -23,13 +26,8 @@ class temiroozkomuz extends StatefulWidget {
 
 class _temiroozkomuzState extends State<temiroozkomuz> {
 void play(){
- 
-    if(a==true)AudioPlayer().stop();
-    AudioPlayer().play(AssetSource("${widget.nameMusic}.mp3"));
-    a = true;
-setState(() {
-print(a);  
-});
+final music = AudioPlayer().play(AssetSource("${widget.nameMusic}.mp3"));
+
 }
   @override
   Widget build(BuildContext context) {
@@ -37,10 +35,8 @@ print(a);
       onTap: () { 
         play();
         },
+        
 
-        // AudioPlayer().stop();
-        // AudioPlayer().play(AssetSource("$nameMusic.mp3"));
-        // play(nameMusic);
       child: Container(
         height: 90,
         width: double.infinity,
@@ -53,6 +49,3 @@ print(a);
     );
   }
 }
-
-  
-  
